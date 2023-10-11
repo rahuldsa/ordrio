@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <style>
+      body {
+        text-align: center;
+        background-color: #f0f0f0;
+        font-family: Arial, sans-serif;
+        padding: 20px;
+      }
+      h1 {
+        color: #333;
+      }
+      textarea {
+        width: 80%;
+        height: 150px;
+        margin: 20px auto;
+        padding: 10px;
+        font-size: 16px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        background-color: #fff;
+        box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+      }
+      button {
+        margin: 10px;
+        padding: 10px 20px;
+        font-size: 18px;
+        border: none;
+        border-radius: 5px;
+        background-color: #007bff;
+        color: #fff;
+        cursor: pointer;
+        box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+      }
+      button:hover {
+        background-color: #0056b3;
+      }
+    </style>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Speech Synthesis App</title>
+  </head>
+  <body>
+    <h1>Text to Speech Synthesis</h1>
+    <textarea id="textToSpeak" placeholder="Enter text to speak..."></textarea>
+    <button id="playButton">Play</button>
+    <button id="pauseButton">Pause</button>
+  </body>
+</html>
+
+<script>
+  // Get references to HTML elements
+  const textToSpeak = document.getElementById("textToSpeak");
+  const playButton = document.getElementById("playButton");
+  const pauseButton = document.getElementById("pauseButton");
+
+  // Initialize the Speech Synthesis API
+  const synth = window.speechSynthesis;
+  const utterance = new SpeechSynthesisUtterance();
+
+  // Function to start speech synthesis
+  function startSpeechSynthesis() {
+    // Check if speech synthesis is in progress and cancel it if needed
+    if (synth.speaking) {
+      synth.cancel();
+    }
+
+    const text = textToSpeak.value;
+    if (text.trim() !== "") {
+      // Ensure there's non-empty text to speak
+      utterance.text = text;
+      synth.speak(utterance);
+    }
+  }
+
+  // Function to pause speech synthesis
+  function pauseSpeechSynthesis() {
+    synth.pause();
+  }
+
+  // Event listeners for the buttons
+  playButton.addEventListener("click", startSpeechSynthesis);
+  pauseButton.addEventListener("click", pauseSpeechSynthesis);
+</script>
