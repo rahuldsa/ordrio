@@ -15,7 +15,7 @@ The Speech Synthesis App is a web-based application that allows users to convert
 
 ## Usage
 
-1. Open the [Speech Synthesis App](https://your-app-url-here.com) in your web browser.
+1. Open the [Speech Synthesis App](https://652661abc978522a08526b2b--endearing-faun-99acf2.netlify.app/) in your web browser.
 
 2. Enter the text you want to convert to speech in the provided textarea.
 
